@@ -1,0 +1,26 @@
+{
+  "categoryList": {
+    "list": [
+      {
+        "id": "1",
+        "image": "https://api.b7web.com.br/devsfood/media/products/tortachocolate.jpg",
+        "name": "Tortas"
+      },
+      {
+        "id": "2",
+        "image": "https://api.b7web.com.br/devsfood/media/products/tortachocolate.jpg",
+        "name": "Donuts"
+      },
+      {
+        "id": "3",
+        "image": "https://api.b7web.com.br/devsfood/media/products/tortachocolate.jpg",
+        "name": "Cookies"
+      },
+      {
+        "id": "4",
+        "image": "/assets/food-and-restaurant.png",
+        "name": "Todas as categories"
+      }
+    ]
+  }
+}

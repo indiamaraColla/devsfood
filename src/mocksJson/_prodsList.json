@@ -1,0 +1,46 @@
+{
+  "error": "",
+  "result": {
+    "total": 4,
+    "page": 1,
+    "pages": 1,
+    "data": [
+      {
+        "id": 1,
+        "id_cat": 1,
+        "name": "Torta de Chocolate",
+        "image": "https://api.b7web.com.br/devsfood/media/products/tortachocolate.jpg",
+        "price": 93,
+        "ingredients": "algo, outro, tipo",
+        "points": 1
+      },
+      {
+        "id": 3,
+        "id_cat": 2,
+        "name": "Donut de Flocos",
+        "image": "https://api.b7web.com.br/devsfood/media/products/donutflocos.jpg",
+        "price": 0.8,
+        "ingredients": "sal, frango",
+        "points": 1
+      },
+      {
+        "id": 2,
+        "id_cat": 1,
+        "name": "Torta de Morango",
+        "image": "https://api.b7web.com.br/devsfood/media/products/tortamorango.jpg",
+        "price": 128.12,
+        "ingredients": null,
+        "points": 0
+      },
+      {
+        "id": 4,
+        "id_cat": 2,
+        "name": "Donut de Chocolate",
+        "image": "https://api.b7web.com.br/devsfood/media/products/donutchocolate.jpg",
+        "price": 1.5,
+        "ingredients": "sal, frango",
+        "points": 0
+      }
+    ]
+  }
+}

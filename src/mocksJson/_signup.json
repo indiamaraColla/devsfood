@@ -1,0 +1,16 @@
+{
+  "signup": [
+    {
+      "name": "mara",
+      "cpf": "03950692039",
+      "birth": "22/09/2003",
+      "email": "mara@gmail.com",
+      "cell": "47 839383929",
+      "password": "12345",
+      "address": "Rua Cristo Rei",
+      "number": "300",
+      "neighborhood": "Centro",
+      "city": "Santa Isazel"
+    }
+  ]
+}
