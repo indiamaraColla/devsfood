@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../../../styles/components/Button';
-import ApiAxiosApiary from '../../../Utils/ApiAxiosApiary';
+import api from '../../../Utils/api';
 
 import { Container, SignForm, Form } from '../styles';
 
@@ -46,7 +46,7 @@ const SignUp = () => {
       newpassword: values.newpassword,
     };
 
-    ApiAxiosApiary.post('/signup', body).then((response) => {
+    api.post('/signup', body).then((response) => {
       if (
         values.name !== '' &&
         values.email !== '' &&

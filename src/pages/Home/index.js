@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
 
-import ApiAxiosApiary from '../../Utils/ApiAxiosApiary';
+import api from '../../Utils/api';
 
 import Header from '../../components/Header';
 import CategoryItem from '../../components/CategoryItem';
@@ -35,10 +35,29 @@ const Home = () => {
   const [activeSearch, setActiveSearch] = useState('');
 
   const getProducts = async () => {
-    ApiAxiosApiary.post('/products').then((response) => {
+    let fields = {};
+
+    if (activeCategory !== 0) {
+      fields.category = activeCategory;
+    }
+    if (activePage > 0) {
+      fields.page = activePage;
+    }
+    if (activeSearch !== '') {
+      fields.search = activeSearch;
+    }
+
+    let queryString = new URLSearchParams(fields).toString();
+
+    api.post('/products?' + queryString).then((response) => {
       setProducts(response.data.result.data);
       setTotalPages(response.data.result.pages);
       setActivePage(response.data.result.pages);
+
+      // ver tbm pq nao ta puxando a url certa igual no network
+      // fazer o search funcionar
+      // let fields = response.data.result.data.filter((item) => item.name);
+      // console.log('$$$$$$$teste', fields);
     });
   };
 
@@ -51,7 +70,7 @@ const Home = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const cat = ApiAxiosApiary.post('/categories').then((response) => {
+      const cat = api.post('/categories').then((response) => {
         setCategories(response.data.categoryList.result);
       });
       ReactTooltip.rebuild();

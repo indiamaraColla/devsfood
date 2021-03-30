@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../../styles/components/Button';
 import { Container, SignForm } from '../styles';
 
-import ApiAxiosApiary from '../../../Utils/ApiAxiosApiary';
+import api from '../../../Utils/api';
 
 const initialState = {
   email: '',
@@ -28,7 +28,7 @@ const SignIn = () => {
       password: values.password,
     };
 
-    ApiAxiosApiary.post('/signin', body).then((response) => {
+    api.post('/signin', body).then((response) => {
       if (values.email === response.data.email && values.password === response.data.password) {
         setValues(response.data);
         history.push('/');

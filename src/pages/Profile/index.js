@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 
 import Button from '../../styles/components/Button';
-import ApiAxiosApiary from '../../Utils/ApiAxiosApiary';
+import api from '../../Utils/api';
 
 import { Container, AccountArea, AccountList, AccountListItem, AccountListGroup, AccountButtonArea } from './styled';
 
@@ -23,7 +23,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    ApiAxiosApiary.post('/signup').then((response) => {
+    api.post('/signup').then((response) => {
       setValues(response.data);
     });
   }, []);
