@@ -85,6 +85,7 @@ const Home = () => {
   useEffect(() => {
     setProducts([]);
     getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory, activePage, activeSearch]);
 
   const handleProductClick = (data) => {
