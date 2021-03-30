@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Header from '../../components/Header';
 
 import Button from '../../styles/components/Button';
-// import db from '../../mocksJson/_signup.json';
+import Header from '../../components/Header';
+import HeaderSearch from '../../components/HeaderSearch';
+import Cart from '../../components/Cart';
 
-import { Container, AccountArea, AccountList, AccountListItem, AccountListGroup, AccountButtonArea } from './styled';
+import { Container, PageBody } from '../../AppStyled.js/styled';
+
+import {
+  ContainerArea,
+  AccountArea,
+  AccountList,
+  AccountListItem,
+  AccountListGroup,
+  AccountButtonArea,
+} from './styled';
 
 const initialState = {
   name: '',
@@ -59,133 +69,139 @@ const ProfileUpdate = () => {
 
   return (
     <Container>
-      <Header headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
+      <Header />
+      <PageBody>
+        <ContainerArea>
+          <HeaderSearch headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
 
-      <AccountArea>
-        <h1>MEUS DADOS</h1>
-        <AccountList onSubmit={handleSubmitEdit}>
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Nome:</span>
-              <input
-                type="text"
-                name="name"
-                placeholder="Digite seu nome"
-                value={values.name}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-            <AccountListItem>
-              <span>CPF:</span>
-              <input
-                type="number"
-                name="cpf"
-                placeholder="Digite seu CPF"
-                value={values.cpf}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Data de Nascimento:</span>
-              <input
-                type="data"
-                name="birth"
-                placeholder="00/00/0000"
-                value={values.birth}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-            <AccountListItem>
-              <span>E-mail:</span>
-              <input
-                type="text"
-                name="email"
-                placeholder="Digite seu email"
-                value={values.email}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Endereço:</span>
-              <input
-                type="text"
-                name="address"
-                placeholder="Digite seu Endereço"
-                value={values.address}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-            <AccountListItem>
-              <span>Bairro:</span>
-              <input
-                type="text"
-                name="neighborhood"
-                placeholder="Digite seu Bairro"
-                value={values.neighborhood}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
+          <AccountArea>
+            <h1>MEUS DADOS</h1>
+            <AccountList onSubmit={handleSubmitEdit}>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Nome:</span>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Digite seu nome"
+                    value={values.name}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+                <AccountListItem>
+                  <span>CPF:</span>
+                  <input
+                    type="number"
+                    name="cpf"
+                    placeholder="Digite seu CPF"
+                    value={values.cpf}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Data de Nascimento:</span>
+                  <input
+                    type="data"
+                    name="birth"
+                    placeholder="00/00/0000"
+                    value={values.birth}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+                <AccountListItem>
+                  <span>E-mail:</span>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Digite seu email"
+                    value={values.email}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Endereço:</span>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Digite seu Endereço"
+                    value={values.address}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+                <AccountListItem>
+                  <span>Bairro:</span>
+                  <input
+                    type="text"
+                    name="neighborhood"
+                    placeholder="Digite seu Bairro"
+                    value={values.neighborhood}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
 
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Cidade:</span>
-              <input
-                type="text"
-                name="city"
-                placeholder="Digite sua Cidade"
-                value={values.city}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Cidade:</span>
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="Digite sua Cidade"
+                    value={values.city}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
 
-            <AccountListItem>
-              <span>Celular:</span>
-              <input
-                type="number"
-                name="cell"
-                placeholder="Digite seu Celular"
-                value={values.cell}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Senha:</span>
-              <input
-                type="text"
-                name="password"
-                placeholder="Digite sua Senha"
-                value={values.password}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-            <AccountListItem>
-              <span>Nova Senha:</span>
-              <input
-                type="text"
-                name="newpassword"
-                placeholder="Digite sua nova Senha"
-                value={values.newpassword}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
-        </AccountList>
-        <AccountButtonArea>
-          <Button size="big" type="submit" onClick={handleButtonCameBach}>
-            Cancelar
-          </Button>
-          <Button size="big" type="submit" onClick={handleButtonEdit}>
-            Salvar dados
-          </Button>
-        </AccountButtonArea>
-      </AccountArea>
+                <AccountListItem>
+                  <span>Celular:</span>
+                  <input
+                    type="number"
+                    name="cell"
+                    placeholder="Digite seu Celular"
+                    value={values.cell}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Senha:</span>
+                  <input
+                    type="text"
+                    name="password"
+                    placeholder="Digite sua Senha"
+                    value={values.password}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+                <AccountListItem>
+                  <span>Nova Senha:</span>
+                  <input
+                    type="text"
+                    name="newpassword"
+                    placeholder="Digite sua nova Senha"
+                    value={values.newpassword}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
+            </AccountList>
+            <AccountButtonArea>
+              <Button size="big" type="submit" onClick={handleButtonCameBach}>
+                Cancelar
+              </Button>
+              <Button size="big" type="submit" onClick={handleButtonEdit}>
+                Salvar dados
+              </Button>
+            </AccountButtonArea>
+          </AccountArea>
+        </ContainerArea>
+      </PageBody>
+      <Cart />
     </Container>
   );
 };

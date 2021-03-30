@@ -3,14 +3,18 @@ import ReactTooltip from 'react-tooltip';
 
 import api from '../../Utils/api';
 
+import Cart from '../../components/Cart';
 import Header from '../../components/Header';
+import HeaderSearch from '../../components/HeaderSearch';
 import CategoryItem from '../../components/CategoryItem';
 import ProductItem from '../../components/ProductItem';
 import Modal from '../../components/Modal';
 import ModalProduct from '../../components/ModalProduct';
 
+import { Container, PageBody } from '../../AppStyled.js/styled';
+
 import {
-  Container,
+  ContainerArea,
   CategoryArea,
   CategoryList,
   ProductArea,
@@ -18,8 +22,6 @@ import {
   ProductPaginationArea,
   ProductPaginationItem,
 } from './styled';
-
-let searchTimer = null;
 
 const Home = () => {
   const [headerSearch, setHeaderSearch] = useState('');
@@ -32,7 +34,6 @@ const Home = () => {
 
   const [activePage, setActivePage] = useState(1);
   const [activeCategory, setAtctiveCategory] = useState(0);
-  const [activeSearch, setActiveSearch] = useState('');
 
   const getProducts = async () => {
     let fields = {};
@@ -43,34 +44,19 @@ const Home = () => {
     if (activePage > 0) {
       fields.page = activePage;
     }
-    if (activeSearch !== '') {
-      fields.search = activeSearch;
-    }
 
     let queryString = new URLSearchParams(fields).toString();
 
-    api.post('/products?' + queryString).then((response) => {
+    api.get('/products?' + queryString).then((response) => {
       setProducts(response.data.result.data);
       setTotalPages(response.data.result.pages);
       setActivePage(response.data.result.pages);
-
-      // ver tbm pq nao ta puxando a url certa igual no network
-      // fazer o search funcionar
-      // let fields = response.data.result.data.filter((item) => item.name);
-      // console.log('$$$$$$$teste', fields);
     });
   };
 
   useEffect(() => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      setActiveSearch(headerSearch);
-    }, 2000);
-  }, [headerSearch]);
-
-  useEffect(() => {
     const getCategories = async () => {
-      const cat = api.post('/categories').then((response) => {
+      const cat = api.get('/categories').then((response) => {
         setCategories(response.data.categoryList.result);
       });
       ReactTooltip.rebuild();
@@ -86,62 +72,75 @@ const Home = () => {
     setProducts([]);
     getProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCategory, activePage, activeSearch]);
+  }, [activeCategory, activePage]);
 
   const handleProductClick = (data) => {
     setModalData(data);
     setModalStatus(true);
   };
 
+  let productList = products;
+
+  if (headerSearch && productList.length) {
+    const regex = new RegExp(headerSearch, 'gi');
+    productList = productList.filter((product) => regex.test(product.name));
+  }
+
   return (
     <Container>
-      <Header headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
+      <Header />
+      <PageBody>
+        <ContainerArea>
+          <HeaderSearch headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
 
-      {categories.length > 0 && (
-        <CategoryArea>
-          Selecione uma categoria
-          <CategoryList>
-            {categories.map((item, index) => (
-              <CategoryItem
-                key={index}
-                data={item}
-                activeCategory={activeCategory}
-                setAtctiveCategory={setAtctiveCategory}
-              />
-            ))}
-          </CategoryList>
-        </CategoryArea>
-      )}
-      {products.length > 0 && (
-        <ProductArea>
-          <ProductList>
-            {products.map((item, index) => {
-              return <ProductItem key={index} data={item} onClick={handleProductClick} />;
-            })}
-          </ProductList>
-        </ProductArea>
-      )}
+          {categories.length > 0 && (
+            <CategoryArea>
+              Selecione uma categoria
+              <CategoryList>
+                {categories.map((item, index) => (
+                  <CategoryItem
+                    key={index}
+                    data={item}
+                    activeCategory={activeCategory}
+                    setAtctiveCategory={setAtctiveCategory}
+                  />
+                ))}
+              </CategoryList>
+            </CategoryArea>
+          )}
+          {productList.length > 0 && (
+            <ProductArea>
+              <ProductList>
+                {productList.map((item, index) => {
+                  return <ProductItem key={index} data={item} onClick={handleProductClick} />;
+                })}
+              </ProductList>
+            </ProductArea>
+          )}
 
-      {totalPages > 0 && (
-        <ProductPaginationArea>
-          {Array(totalPages)
-            .fill(0)
-            .map((item, index) => (
-              <ProductPaginationItem
-                key={index}
-                active={activePage}
-                current={index + 1}
-                onClick={() => setActivePage(index + 1)}
-              >
-                {index + 1}
-              </ProductPaginationItem>
-            ))}
-        </ProductPaginationArea>
-      )}
+          {totalPages > 0 && (
+            <ProductPaginationArea>
+              {Array(totalPages)
+                .fill(0)
+                .map((item, index) => (
+                  <ProductPaginationItem
+                    key={index}
+                    active={activePage}
+                    current={index + 1}
+                    onClick={() => setActivePage(index + 1)}
+                  >
+                    {index + 1}
+                  </ProductPaginationItem>
+                ))}
+            </ProductPaginationArea>
+          )}
 
-      <Modal modalStatus={modalStatus} setModalStatus={setModalStatus}>
-        <ModalProduct data={modalData} setModalStatus={setModalStatus} />
-      </Modal>
+          <Modal modalStatus={modalStatus} setModalStatus={setModalStatus}>
+            <ModalProduct data={modalData} setModalStatus={setModalStatus} />
+          </Modal>
+        </ContainerArea>
+      </PageBody>
+      <Cart />
     </Container>
   );
 };

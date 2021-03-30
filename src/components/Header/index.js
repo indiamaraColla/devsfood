@@ -1,36 +1,17 @@
-import React, { useState } from 'react';
-import { Container, Logo, SearchInput } from './styled';
+import React from 'react';
+import ReactTooltip from 'react-tooltip';
 
-const MenuItem = ({ headerSearch, setHeaderSearch }) => {
-  const [inputAsctive, setInputActive] = useState(headerSearch === '' ? false : true);
-
-  const handlerInputFocus = () => {
-    setInputActive(true);
-  };
-
-  const handlerInputBlur = () => {
-    if (headerSearch === '') {
-      setInputActive(false);
-    }
-  };
-
-  const handleChange = (e) => {
-    setHeaderSearch(e.target.value);
-  };
-
+import MenuItem from '../MenuItem/index';
+import { Menu } from '../../AppStyled.js/styled';
+const mk = () => {
   return (
-    <Container>
-      <Logo src="/assets/logo.png"></Logo>
-      <SearchInput
-        type="text"
-        value={headerSearch}
-        onChange={handleChange}
-        isactive={inputAsctive}
-        placeholder="Digite um produto...."
-        onFocus={handlerInputFocus}
-        onBlur={handlerInputBlur}
-      />
-    </Container>
+    <Menu>
+      <MenuItem title="Loja" icon="/assets/store.png" link="/" />
+      <MenuItem title="Pedidos" icon="/assets/order.png" link="/orders" />
+      <MenuItem title="Meu Perfil" icon="/assets/profile.png" link="/my-account" />
+      <ReactTooltip id="tip-top" place="top" effect="solid" />
+      <ReactTooltip id="tip-right" place="right" effect="solid" />
+    </Menu>
   );
 };
 
@@ -38,4 +19,4 @@ MenuItem.defaultProps = {
   active: false,
 };
 
-export default MenuItem;
+export default mk;

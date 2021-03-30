@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ContainerArea = styled.div`
   width: 100%;
   padding: 16px;
 `;
+
 export const CategoryArea = styled.div`
   color: #551a8b;
   margin-top: 20px;

@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
+import HeaderSearch from '../../components/HeaderSearch';
+import Cart from '../../components/Cart';
+
+import { Container, PageBody } from '../../AppStyled.js/styled';
 
 import Button from '../../styles/components/Button';
 
-import { Container, AccountArea, AccountList, AccountListItem, AccountListGroup, AccountButtonArea } from './styled';
+import {
+  ContainerArea,
+  AccountArea,
+  AccountList,
+  AccountListItem,
+  AccountListGroup,
+  AccountButtonArea,
+} from './styled';
 
 const initialState = {
   password: '',
@@ -42,43 +53,49 @@ const ProfileUpdatePassword = () => {
 
   return (
     <Container>
-      <Header headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
+      <Header />
+      <PageBody>
+        <ContainerArea>
+          <HeaderSearch headerSearch={headerSearch} setHeaderSearch={setHeaderSearch} />
 
-      <AccountArea>
-        <h1> ALTERAR SENHA</h1>
-        <AccountList onSubmit={handleSubmitEdit}>
-          <AccountListGroup>
-            <AccountListItem>
-              <span>Senha:</span>
-              <input
-                type="text"
-                name="password"
-                placeholder="Digite sua Senha"
-                value={values.password}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-            <AccountListItem>
-              <span>Nova Senha:</span>
-              <input
-                type="text"
-                name="newpassword"
-                placeholder="Digite sua nova Senha"
-                value={values.newpassword}
-                onChange={handleClickInput}
-              />
-            </AccountListItem>
-          </AccountListGroup>
-        </AccountList>
-        <AccountButtonArea>
-          <Button size="big" type="submit" onClick={handleButtonCameBach}>
-            Cancelar
-          </Button>
-          <Button size="big" type="submit" onClick={handleButtonEdit}>
-            Salvar dados
-          </Button>
-        </AccountButtonArea>
-      </AccountArea>
+          <AccountArea>
+            <h1> ALTERAR SENHA</h1>
+            <AccountList onSubmit={handleSubmitEdit}>
+              <AccountListGroup>
+                <AccountListItem>
+                  <span>Senha:</span>
+                  <input
+                    type="text"
+                    name="password"
+                    placeholder="Digite sua Senha"
+                    value={values.password}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+                <AccountListItem>
+                  <span>Nova Senha:</span>
+                  <input
+                    type="text"
+                    name="newpassword"
+                    placeholder="Digite sua nova Senha"
+                    value={values.newpassword}
+                    onChange={handleClickInput}
+                  />
+                </AccountListItem>
+              </AccountListGroup>
+            </AccountList>
+            <AccountButtonArea>
+              <Button size="big" type="submit" onClick={handleButtonCameBach}>
+                Cancelar
+              </Button>
+              <Button size="big" type="submit" onClick={handleButtonEdit}>
+                Salvar dados
+              </Button>
+            </AccountButtonArea>
+          </AccountArea>
+        </ContainerArea>
+      </PageBody>
+      <Cart />
     </Container>
   );
 };

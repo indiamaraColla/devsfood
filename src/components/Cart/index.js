@@ -47,7 +47,8 @@ const MenuItem = () => {
 
   const handleClickProduct = (e) => {
     e.preventDefault();
-    console.log('@@@@@@ deu certo', products);
+
+    // console.log('@@@@@@ deu certo', products);
   };
 
   return (
@@ -85,6 +86,7 @@ const MenuItem = () => {
               </ProductQuantity>
             </ProductsItem>
           ))}
+
           {show === true && products.length !== 0 && (
             <ProductsItem>
               <Button size="big" type="submit" onClick={handleClickProduct}>
