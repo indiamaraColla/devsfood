@@ -63,6 +63,7 @@ const Home = () => {
 
       if (cat.error === '') {
         setCategories(cat.result);
+        ReactTooltip.rebuild();
       }
     };
     getCategories();

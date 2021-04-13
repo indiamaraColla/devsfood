@@ -47,8 +47,6 @@ const MenuItem = () => {
 
   const handleClickProduct = (e) => {
     e.preventDefault();
-
-    // console.log('@@@@@@ deu certo', products);
   };
 
   return (

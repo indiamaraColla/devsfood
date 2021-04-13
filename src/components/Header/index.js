@@ -6,7 +6,7 @@ import { Menu } from '../../AppStyled.js/styled';
 const mk = () => {
   return (
     <Menu>
-      <MenuItem title="Loja" icon="/assets/store.png" link="/" />
+      <MenuItem title="Loja" icon="/assets/store.png" link="/home" />
       <MenuItem title="Pedidos" icon="/assets/order.png" link="/orders" />
       <MenuItem title="Meu Perfil" icon="/assets/profile.png" link="/my-account" />
       <ReactTooltip id="tip-top" place="top" effect="solid" />

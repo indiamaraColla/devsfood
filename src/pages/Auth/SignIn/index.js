@@ -31,7 +31,7 @@ const SignIn = () => {
     api.post('/signin', body).then((response) => {
       if (values.email === response.data.email && values.password === response.data.password) {
         setValues(response.data);
-        history.push('/');
+        history.push('/home');
       } else {
         alert('Dados Incorretos');
       }

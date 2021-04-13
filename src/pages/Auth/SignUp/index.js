@@ -59,7 +59,7 @@ const SignUp = () => {
         values.newpassword !== ''
       ) {
         setValues(response.data);
-        history.push('/');
+        history.push('/home');
       } else {
         console.log({ error: 'Preencha os dados para continuar!' });
       }
@@ -68,7 +68,7 @@ const SignUp = () => {
 
   const handleClickCameBack = (e) => {
     e.preventDefault();
-    history.push('/signin');
+    history.push('/');
   };
 
   return (
