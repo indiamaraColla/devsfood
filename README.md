@@ -32,7 +32,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
 
 1. Clone o repositório do projeto para o seu computador usando o seguinte comando no terminal ou prompt de comando:
    ```bash
-   git clone [https://github.com/indiamaraColla/portfolio.git](https://github.com/indiamaraColla/devsfood.git)
+   git clone [(https://github.com/indiamaraColla/devsfood.git)]
    ```
 2. Navegue até o diretório do projeto:
    ```bash
