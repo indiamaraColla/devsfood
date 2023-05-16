@@ -2,6 +2,22 @@
 
 Este projeto foi desenvolvido durante o curso de [Boniek Lacerda]([https://www.linkedin.com/in/indiamara-colla](https://alunos.b7web.com.br/)). O projeto conta com login, cadastro, e toda parte de uma simulação de loja virtual.
 
+   
+### Prática
+---
+Programação é um universo infinito, por isso ter foco é o primeiro passo.
+
+ <br>
+
+ ### Tecnologias usadas
+---
+* React
+* Styled-Componetes
+* Fecth
+* Redux
+
+ <br>
+
 ## Instalação
 
 Siga as instruções abaixo para configurar e executar o projeto React em seu ambiente local.
@@ -31,6 +47,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
    ```bash
    npm start
    ```
+   
    
    ## Desenvolvido
 
