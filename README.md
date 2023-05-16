@@ -7,7 +7,6 @@ Este projeto foi desenvolvido durante o curso de [Boniek Lacerda]([https://www.l
 
 Programação é um universo infinito, por isso ter foco é o primeiro passo.
 
- <br>
 
  ### Tecnologias usadas
 
@@ -16,7 +15,7 @@ Programação é um universo infinito, por isso ter foco é o primeiro passo.
 * Fecth
 * Redux
 
- <br>
+
 
 ## Instalação
 
