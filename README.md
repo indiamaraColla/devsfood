@@ -1,6 +1,6 @@
 # DevsFoof
 
-Este projeto foi desenvolvido em aula.
+Este projeto foi desenvolvido durante o curso de [Boniek Lacerda]([https://www.linkedin.com/in/indiamara-colla](https://alunos.b7web.com.br/)). O projeto conta com login, cadastro, e toda parte de uma simulação de loja virtual.
 
 ## Instalação
 
